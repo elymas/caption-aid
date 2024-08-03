@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caption-Aid :: Image Captioning Tool</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Import Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        #captionContainer {
+            display: block;
+            width: 100%;
+            height: 200px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            overflow: hidden;
+            padding: 15px;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        #pasteArea {
+            border: 2px dashed #007bff;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        #imagePreview {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background-color: #f8f9fa;
+        }
+        .vertical-divider {
+            border-left: 1px solid #dee2e6;
+            height: 100%;
+        }
+        .section-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 수정된 헤더 -->
+    <header class="header">
+        <h1>
+            <img src="favicon.png" alt="Caption-Aid Logo">
+            Caption-Aid
+        </h1>
+        <p>Your Intelligent Image Captioning Tool</p>
+    </header>
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left Column for Upload and Preview -->
+            <div class="col-md-6">
+                <div class="section-label">Image Preview</div>
+                <div class="mt-3">
+                    <img id="imagePreview" src="https://placehold.co/500x300?text=Image+Preview" alt="Image preview" class="img-fluid">
+                </div>
+                
+                <div class="section-label mt-3">Paste Image</div>
+                <div id="pasteArea" class="mt-1">
+                    Click here or paste an image
+                </div>
+                
+                <div class="section-label mt-3">Upload Image</div>
+                <form id="imageUploadForm">
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" id="imageInput" accept="image/*">
+                    </div>
+                    <button type="button" id="submitBtn" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+            <!-- Vertical Divider -->
+            <div class="col-md-1 d-flex justify-content-center">
+                <div class="vertical-divider"></div>
+            </div>
+
+            <!-- Right Column for Caption Display -->
+            <div class="col-md-5">
+                <div class="section-label">Generated Caption</div>
+                <div id="captionContainer" class="mt-1">
+                    <p id="imageCaption">Caption will be displayed here.</p>
+                </div>
+                <div class="mt-3">
+                    <button id="speakBtn" class="btn btn-secondary">Hear Caption</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
